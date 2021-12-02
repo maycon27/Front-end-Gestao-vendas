@@ -10,7 +10,8 @@ import { environment} from 'src/environments/environment'
 
 export class CategoriaService {
 
-  private readonly API = `${environment.API}categoria`;
+  private readonly API = `${environment.API}/categoria`;
+
 
   constructor(private httpCliente: HttpClient) { }
 
