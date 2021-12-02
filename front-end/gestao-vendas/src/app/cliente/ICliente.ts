@@ -3,10 +3,10 @@ export interface ICliente{
   nome: string;
   telefone: string;
   ativo: boolean;
-  endereco: endereco;
+  enderecoDto: enderecoDto;
 }
 
-export interface endereco{
+export interface enderecoDto{
   logradouro: string;
   numero: number;
   complemento: string;

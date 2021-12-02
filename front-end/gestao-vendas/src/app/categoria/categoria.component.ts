@@ -17,7 +17,6 @@ export class CategoriaComponent implements OnInit {
     this.categoriaService.getTodasCategorias().subscribe(dados => this.categoria = dados);
   }
 
-
   getTodasCategorias(){
     this.categoriaService.getTodasCategorias().subscribe(dados => this.categoria = dados);
   }

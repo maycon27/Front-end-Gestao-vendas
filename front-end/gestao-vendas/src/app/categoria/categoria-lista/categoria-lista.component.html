@@ -1,0 +1,14 @@
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Categorias</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let categoria of categoria">
+      <td>{{ categoria.codigo}} </td>
+      <td>{{ categoria.nome}} </td>
+    </tr>
+  </tbody>
+</table>

@@ -12,26 +12,22 @@ export class CategoriaService {
   constructor(private httpCliente: HttpClient) { }
 
   getTodasCategorias(){
-    return this.httpCliente.get<ICategoria[]>(`${API_PATH}categoria`);
-  }
-
-  getTodasCategorias2(){
-    return this.httpCliente.get<ICategoria[]>(`${API_PATH}categoria`).toPromise;
+    return this.httpCliente.get<ICategoria[]>(`/api/categoria`);
   }
 
   getCategoriaId(codigo: number){
-    return this.httpCliente.get<ICategoria>(`${API_PATH}categoria/${codigo}`).toPromise();
+    return this.httpCliente.get<ICategoria>(`/api/categoria/${codigo}`).toPromise();
   }
 
   adicionarCategoria(categoria: ICategoria){
-    return this.httpCliente.post<ICategoria>(`${API_PATH}categoria`,categoria).toPromise();
+    return this.httpCliente.post<ICategoria>(`/api/categoria`,categoria).toPromise();
   }
 
   atualizarCategoria(categoria: ICategoria){
-    return this.httpCliente.put<ICategoria>(`${API_PATH}categoria/${categoria.codigo}`,categoria).toPromise();
+    return this.httpCliente.put<ICategoria>(`/api/categoria/${categoria.codigo}`,categoria).toPromise();
   }
 
   deletarCategoria(codigo: number){
-    return this.httpCliente.delete(`${API_PATH}categoria/${codigo}`).toPromise();
+    return this.httpCliente.delete(`/api/categoria/${codigo}`).toPromise();
   }
 }

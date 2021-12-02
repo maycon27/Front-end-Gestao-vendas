@@ -1,4 +1,4 @@
-import { ModuleWithProviders } from '@angular/core';
+import { CategoriaListaComponent } from './categoria/categoria-lista/categoria-lista.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { ProdutoComponent } from './produto/produto.component';
