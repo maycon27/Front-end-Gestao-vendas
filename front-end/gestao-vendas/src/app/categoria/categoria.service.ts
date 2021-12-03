@@ -2,6 +2,7 @@ import { ICategoria } from './ICategoria';
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
 import { environment} from 'src/environments/environment'
+import { tap, delay, take } from 'rxjs/operators';
 
 
 @Injectable({
@@ -20,15 +21,15 @@ export class CategoriaService {
   }
 
   getCategoriaId(codigo: number){
-    return this.httpCliente.get<ICategoria>(`${this.API}/${codigo}`).toPromise();
+    return this.httpCliente.get<ICategoria>(`${this.API}/${codigo}`);
   }
 
   adicionarCategoria(categoria: ICategoria){
-    return this.httpCliente.post<ICategoria>(this.API,categoria).toPromise();
+    return this.httpCliente.post<ICategoria>(this.API,categoria).pipe(take(1));
   }
 
   atualizarCategoria(categoria: ICategoria){
-    return this.httpCliente.put<ICategoria>(`${this.API}${categoria.codigo}`,categoria).toPromise();
+    return this.httpCliente.put<ICategoria>(`${this.API}/${categoria.codigo}`,categoria).pipe(take(1));
   }
 
   deletarCategoria(codigo: number){

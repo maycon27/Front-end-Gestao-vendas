@@ -21,18 +21,14 @@ export class CategoriaComponent implements OnInit {
     this.categoriaService.getTodasCategorias().subscribe(dados => this.categoria = dados);
   }
   getCategoriaId(){
-    this.categoriaService.getCategoriaId(1)
-    .then(categoria => console.log(categoria))
-    .catch(error => console.error());
+    this.categoriaService.getCategoriaId(1);
   }
 
   adicionarCategoria(){
     const categoria: ICategoria = {
       nome: "nenhuma"
     };
-    this.categoriaService.adicionarCategoria(categoria)
-    .then(categoria => console.log('categoria adicionada'))
-    .catch(error => console.error());
+    this.categoriaService.adicionarCategoria(categoria);
   }
 
   atualizarCategoria(){
@@ -40,9 +36,7 @@ export class CategoriaComponent implements OnInit {
       codigo: 6,
       nome: "nenhuma1"
     };
-    this.categoriaService.atualizarCategoria(categoria)
-    .then(categoria => console.log('categoria atualizada'))
-    .catch(error => console.error());
+    this.categoriaService.atualizarCategoria(categoria);
   }
 
   deletarCategoria(){

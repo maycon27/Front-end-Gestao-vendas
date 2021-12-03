@@ -1,3 +1,4 @@
+import { Router} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ICategoria } from 'src/app/categoria/ICategoria';
 import { CategoriaService } from '../categoria.service';
@@ -10,10 +11,17 @@ import { CategoriaService } from '../categoria.service';
 export class CategoriaListaComponent implements OnInit {
 
   categoria: ICategoria[] = [];
-  constructor(private categoriaService: CategoriaService) { }
+  constructor(
+    private categoriaService: CategoriaService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.categoriaService.getTodasCategorias().subscribe(dados => this.categoria = dados);
   }
 
+  atualizarCategoria(codigo: any){
+    this.router.navigate(['categoria/editar', codigo])
+
+  }
 }
