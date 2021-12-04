@@ -32,7 +32,7 @@ export class CategoriaService {
     return this.httpCliente.put<ICategoria>(`${this.API}/${categoria.codigo}`,categoria).pipe(take(1));
   }
 
-  deletarCategoria(codigo: number){
-    return this.httpCliente.delete(`${this.API}${codigo}`).toPromise();
+  deletarCategoria(codigo: number | undefined){
+    return this.httpCliente.delete(`${this.API}/${codigo}`);
   }
 }

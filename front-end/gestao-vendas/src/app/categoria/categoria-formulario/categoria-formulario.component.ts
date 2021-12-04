@@ -30,11 +30,12 @@ export class CategoriaFormularioComponent implements OnInit {
       nome:[categoria.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]]
     });
 
+
   }
 
   adicionarCategoria(){
 
-    if(this.form.value){
+    if(this.form.value.codigo){
       this.categoriaService.atualizarCategoria(this.form.value).subscribe(
         secesso => {
           this.location.back();
@@ -42,9 +43,7 @@ export class CategoriaFormularioComponent implements OnInit {
         error => console.error(error)
       );
     }
-
     else{
-
     if(this.form.valid){
       this.categoriaService.adicionarCategoria(this.form.value).subscribe(
         secesso => {
@@ -56,6 +55,7 @@ export class CategoriaFormularioComponent implements OnInit {
     }
   }
   }
+
 
 }
 
