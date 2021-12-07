@@ -1,49 +1,132 @@
-<div class="form-group" [formGroup] = "form">
-  <label for="Nome">Nome</label>
-  <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome">
-  <p></p>
-  <label for="Telefone">Telefone</label>
-  <input type="text" class="form-control" id="telefone" placeholder="Telefone" formControlName="telefone">
-  <p></p>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="ativo" id="ativo" value="true" checked formControlName="ativo">
-    <label class="form-check-label" for="ativo">
-      Ativo
-    </label>
+<form>
+  <div class="form-group" [formGroup]="form">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="Nome">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome">
+        <small class="text-danger" *ngIf="form.invalid">Nome obrigatorio</small>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="Telefone">Telefone</label>
+        <input type="text" class="form-control" id="telefone" placeholder="Telefone" formControlName="telefone">
+        <small class="text-danger" *ngIf="form.invalid">Telefone obrigatorio</small>
+      </div>
+    </div>
+    <div formGroupName="enderecoDto" class="form-group">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Logradouro">Logradouro</label>
+          <input type="text" class="form-control" id="logradouro" placeholder="Logradouro" formControlName="logradouro">
+          <small class="text-danger" *ngIf="form.invalid">Logradouro obrigatorio</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="omeplemento">Complemento</label>
+          <input type="text" class="form-control" id="complemento" placeholder="Complemento"
+            formControlName="complemento">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="Numero">Numero</label>
+          <input type="number" class="form-control" id="numero" placeholder="Número" formControlName="numero">
+          <small class="text-danger" *ngIf="form.invalid">Número obrigatorio</small>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="CEP">CEP</label>
+          <input type="text" class="form-control" id="cep" placeholder="CEP" formControlName="cep">
+          <small class="text-danger" *ngIf="form.invalid">CEP obrigatorio</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Bairro">Bairro</label>
+          <input type="text" class="form-control" id="Bairro" placeholder="Bairro" formControlName="bairro">
+          <small class="text-danger" *ngIf="form.invalid">Bairro obrigatorio</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Cidade">Cidade</label>
+          <input type="text" class="form-control" id="cidade" placeholder="Cidade" formControlName="cidade">
+          <small class="text-danger" *ngIf="form.invalid">Cidade obrigatorio</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Estado">Estado</label>
+          <input type="text" class="form-control" id="estado" placeholder="Estado" formControlName="estado">
+          <small class="text-danger" *ngIf="form.invalid">Estado obrigatorio</small>
+        </div>
+      </div>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="ativo" id="ativo" value="true" checked formControlName="ativo">
+      <label class="form-check-label" for="ativo">
+        Ativo
+      </label>
+    </div>
+    <p></p>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="ativo" id="ativo" value="false" formControlName="ativo">
+      <label class="form-check-label" for="ativo">
+        Não ativo
+      </label>
+    </div>
   </div>
-  <p></p>
-  <div class="form-check">
-    <input class="form-check-input" type="radio" name="ativo" id="ativo" value="false" formControlName="ativo">
-    <label class="form-check-label" for="ativo">
-     Não ativo
-    </label>
-  </div>
-  <p></p>
-<div formGroupName="enderecoDto">
-<div class="form-group">
-  <label for="Logradouro">Logradouro</label>
-  <input type="text" class="form-control" id="logradouro" placeholder="Logradouro" formControlName="logradouro">
-  <p></p>
-  <label for="Numero">Numero</label>
-  <input type="number" class="form-control" id="numero" placeholder="Número" formControlName="numero">
-  <p></p>
-  <label for="omeplemento">Complemento</label>
-  <input type="text" class="form-control" id="complemento" placeholder="Complemento" formControlName="complemento">
-  <p></p>
-  <label for="Bairro">Bairro</label>
-  <input type="text" class="form-control" id="Bairro" placeholder="Bairro" formControlName="bairro">
-  <p></p>
-  <label for="CEP">CEP</label>
-  <input type="text" class="form-control" id="cep" placeholder="CEP" formControlName="cep">
-  <p></p>
-  <label for="Cidade">Cidade</label>
-  <input type="text" class="form-control" id="cidade" placeholder="Cidade" formControlName="cidade">
-  <p></p>
-  <label for="Estado">Estado</label>
-  <input type="text" class="form-control" id="estado" placeholder="Estado" formControlName="estado">
-</div>
-</div>
-</div>
-<p></p>
-<p></p>
-<button type="submit" class="btn btn-outline-success" (click)="adicionarCliente()">Salvar</button>
+
+
+
+  <!--<div class="form-group" [formGroup]="form">
+    <div class="col-md-12">
+      <label for="Nome">Nome</label>
+      <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome">
+      <small class="text-danger" *ngIf="form.invalid">Nome obrigatorio</small>
+    </div>
+    <div class="col-md-6">
+      <label for="Telefone">Telefone</label>
+      <input type="text" class="form-control" id="telefone" placeholder="Telefone" formControlName="telefone">
+      <small class="text-danger" *ngIf="form.invalid">Telefone obrigatorio</small>
+    </div>
+    <div formGroupName="enderecoDto">
+      <div class="form-group">
+        <div class="col-md-3">
+          <label for="Logradouro">Logradouro</label>
+          <input type="text" class="form-control" id="logradouro" placeholder="Logradouro" formControlName="logradouro">
+          <small class="text-danger" *ngIf="form.invalid">Logradouro obrigatorio</small>
+        </div>
+        <label for="Numero">Numero</label>
+        <input type="number" class="form-control" id="numero" placeholder="Número" formControlName="numero">
+        <small class="text-danger" *ngIf="form.invalid">Número obrigatorio</small>
+        <p></p>
+        <label for="omeplemento">Complemento</label>
+        <input type="text" class="form-control" id="complemento" placeholder="Complemento"
+          formControlName="complemento">
+        <p></p>
+        <label for="Bairro">Bairro</label>
+        <input type="text" class="form-control" id="Bairro" placeholder="Bairro" formControlName="bairro">
+        <small class="text-danger" *ngIf="form.invalid">Bairro obrigatorio</small>
+        <p></p>
+        <label for="CEP">CEP</label>
+        <input type="text" class="form-control" id="cep" placeholder="CEP" formControlName="cep">
+        <small class="text-danger" *ngIf="form.invalid">CEP obrigatorio</small>
+        <p></p>
+        <label for="Cidade">Cidade</label>
+        <input type="text" class="form-control" id="cidade" placeholder="Cidade" formControlName="cidade">
+        <small class="text-danger" *ngIf="form.invalid">Cidade obrigatorio</small>
+        <p></p>
+        <label for="Estado">Estado</label>
+        <input type="text" class="form-control" id="estado" placeholder="Estado" formControlName="estado">
+        <small class="text-danger" *ngIf="form.invalid">Estado obrigatorio</small>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="ativo" id="ativo" value="true" checked
+            formControlName="ativo">
+          <label class="form-check-label" for="ativo">
+            Ativo
+          </label>
+        </div>
+        <p></p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="ativo" id="ativo" value="false" formControlName="ativo">
+          <label class="form-check-label" for="ativo">
+            Não ativo
+          </label>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</form>
+<button type="submit" class="btn btn-outline-success" [disabled]="form.invalid"
+  (click)="adicionarCliente()">Salvar</button>

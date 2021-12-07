@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'cliente', component: ClienteListaComponent},
   { path: 'cliente/formulario', component: ClienteFormularioComponent},
   { path: 'cliente/editar/:codigo', component: ClienteFormularioComponent},
-  { path: 'cleinte/detalhe/:codigo', component: ClienteDetalheComponent}
+  { path: 'cliente/detalhe/:codigo', component: ClienteDetalheComponent}
 
 
 ];

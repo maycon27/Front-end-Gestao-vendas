@@ -1,8 +1,7 @@
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ICategoria } from 'src/app/categoria/ICategoria';
 import { CategoriaService } from '../categoria.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-categoria-lista',
@@ -16,22 +15,23 @@ export class CategoriaListaComponent implements OnInit {
 
   constructor(
     private categoriaService: CategoriaService,
-    private router: Router
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
     this.categoriaService.getTodasCategorias().subscribe(dados => this.categoria = dados);
+
   }
 
-  atualizarCategoria(codigo: any){
+  atualizarCategoria(codigo: number){
     this.router.navigate(['categoria/editar', codigo])
 
   }
 
-  deletarCategoria(cat: any){
+  deletarCategoria(cat: ICategoria){
     this.categoriaSelecionada = cat;
     this.categoriaService.deletarCategoria(this.categoriaSelecionada.codigo).subscribe(
-      sucesso => location.reload()
+      sucesso =>  this.categoriaService.getTodasCategorias().subscribe(dados => this.categoria = dados)
     );
   }
 }

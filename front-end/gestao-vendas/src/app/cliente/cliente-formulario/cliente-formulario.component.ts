@@ -2,7 +2,7 @@ import { enderecoDto } from './../ICliente';
 import { ClienteService } from './../cliente.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
@@ -18,10 +18,21 @@ export class ClienteFormularioComponent implements OnInit {
     private clienteService: ClienteService,
     private fb: FormBuilder,
     private location: Location,
+    private router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+
+    this.buildForm();
+    const codigo = this.route.snapshot.params['codigo'];
+    if (codigo) {
+      this.preencherFormulario(codigo);
+    }
+
+  }
+
+  buildForm(){
 
     this.form = this.fb.group({
       codigo:[null],
@@ -39,20 +50,38 @@ export class ClienteFormularioComponent implements OnInit {
       estado: [null, [Validators.required]]
       })
     })
+  }
 
+  preencherFormulario(codigo: number) {
+    this.clienteService.getClienteId(codigo)
+      .subscribe(result => {
+        this.form.patchValue(result);
+
+      },
+        error => console.error(error)
+      );
   }
 
   adicionarCliente(){
-    console.log(this.form.value);
-    if(this.form.valid){
 
-      this.clienteService.adicionarCliente(this.form.value).subscribe(
+    const cliente = this.form.value;
+
+    if (cliente.codigo) {
+      this.clienteService.atualizarCliente(cliente).subscribe(
         secesso => {
-          this.location.back();
+          this.router.navigate(['cliente'])
         },
         error => console.error(error)
       );
+    }
 
+    else {
+      this.clienteService.adicionarCliente(cliente).subscribe(
+        secesso => {
+          this.router.navigate(['cliente'])
+        },
+        error => console.error(error)
+      );
     }
   }
 }

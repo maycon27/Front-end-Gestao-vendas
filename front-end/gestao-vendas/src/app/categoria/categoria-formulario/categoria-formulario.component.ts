@@ -1,8 +1,7 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../categoria.service';
-import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-categoria-formulario',
@@ -12,48 +11,64 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoriaFormularioComponent implements OnInit {
 
-   form!: FormGroup;
+  form!: FormGroup;
 
   constructor(
     private categoriaService: CategoriaService,
     private fb: FormBuilder,
-    private location: Location,
+    private router: Router,
     private route: ActivatedRoute
-    ) { }
+  ) { }
 
   ngOnInit(): void {
 
-    const categoria = this.route.snapshot.data['categoria']
+    this.buildForm();
 
+    const codigo = this.route.snapshot.params['codigo'];
+    if (codigo) {
+      this.preencherFormulario(codigo);
+    }
+  }
+
+  buildForm() {
     this.form = this.fb.group({
-      codigo: [categoria.codigo],
-      nome:[categoria.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]]
+      codigo: [],
+      nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]]
     });
-
-
   }
 
-  adicionarCategoria(){
+  preencherFormulario(codigo: number) {
+    this.categoriaService.getCategoriaId(codigo)
+      .subscribe(result => {
+        this.form.patchValue(result);
 
-    if(this.form.value.codigo){
-      this.categoriaService.atualizarCategoria(this.form.value).subscribe(
+      },
+        error => console.error(error)
+      );
+  }
+
+  adicionarCategoria() {
+
+    const categoria = this.form.value;
+
+    if (categoria.codigo) {
+      this.categoriaService.atualizarCategoria(categoria).subscribe(
         secesso => {
-          this.location.back();
+          this.router.navigate(['categoria'])
+        },
+        error => console.error(error)
+      );
+    } else {
+      this.categoriaService.adicionarCategoria(categoria).subscribe(
+        secesso => {
+          this.router.navigate(['categoria'])
         },
         error => console.error(error)
       );
     }
-    else{
-    if(this.form.valid){
-      this.categoriaService.adicionarCategoria(this.form.value).subscribe(
-        secesso => {
-          this.location.back();
-        },
-        error => console.error(error)
-      );
 
-    }
-  }
+
+
   }
 
 

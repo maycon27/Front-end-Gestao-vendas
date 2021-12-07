@@ -15,7 +15,7 @@ export class ProdutoService {
   constructor(private httpCliente: HttpClient) { }
 
   getTodosProdutos(produto: IProduto){
-    return this.httpCliente.get<IProduto[]>(`${this.API}/${produto.categoria.codigo}/categoria/produto`);
+    return this.httpCliente.get<IProduto[]>(`${this.API}/categoria/${produto.categoria.codigo}/produto`);
   }
 
   getProdutoId(codigo: number){
