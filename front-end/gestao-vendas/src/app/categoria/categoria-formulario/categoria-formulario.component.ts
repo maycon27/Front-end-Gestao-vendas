@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../categoria.service';
@@ -17,7 +18,8 @@ export class CategoriaFormularioComponent implements OnInit {
     private categoriaService: CategoriaService,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -70,7 +72,10 @@ export class CategoriaFormularioComponent implements OnInit {
 
 
   }
-
+  voltar()
+  {
+    this.location.back();
+  }
 
 }
 

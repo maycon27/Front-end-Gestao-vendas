@@ -1,4 +1,3 @@
-import { enderecoDto } from './../ICliente';
 import { ClienteService } from './../cliente.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -26,6 +25,7 @@ export class ClienteFormularioComponent implements OnInit {
 
     this.buildForm();
     const codigo = this.route.snapshot.params['codigo'];
+    console.log(codigo)
     if (codigo) {
       this.preencherFormulario(codigo);
     }
@@ -83,5 +83,10 @@ export class ClienteFormularioComponent implements OnInit {
         error => console.error(error)
       );
     }
+  }
+
+  voltar()
+  {
+    this.location.back();
   }
 }

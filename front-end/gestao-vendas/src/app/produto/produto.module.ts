@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { ProdutoListaComponent } from "./produto-lista/produto-lista.component";
 import { ProdutoComponent } from "./produto.component";
 import { ProdutoService } from "./produto.service";
+import { ProdutoFormularioComponent } from './produto-formulario/produto-formulario.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ProdutoService } from "./produto.service";
   exports: [],
   declarations: [
     ProdutoComponent,
-    ProdutoListaComponent
+    ProdutoListaComponent,
+    ProdutoFormularioComponent
   ],
 
   providers: [ProdutoService],

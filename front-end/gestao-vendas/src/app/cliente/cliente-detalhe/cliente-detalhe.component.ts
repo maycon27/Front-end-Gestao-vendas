@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClienteService } from '../cliente.service';
 import { ICliente } from '../ICliente';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cliente-detalhe',
@@ -13,7 +14,8 @@ export class ClienteDetalheComponent implements OnInit {
 
   constructor(
     private clienteService: ClienteService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -21,4 +23,8 @@ export class ClienteDetalheComponent implements OnInit {
     this.clienteService.getClienteId(codigo).subscribe(dados => {this.cliente = dados;})
   }
 
+  voltar()
+  {
+    this.location.back();
+  }
 }

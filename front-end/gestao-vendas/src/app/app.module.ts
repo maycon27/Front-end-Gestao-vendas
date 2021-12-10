@@ -7,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoriaModule} from './categoria/categoria.module';
-
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { CategoriaModule} from './categoria/categoria.module';
     HttpClientModule,
     CategoriaModule,
     ClienteModule,
-    ProdutoModule
+    ProdutoModule,
+    TooltipModule.forRoot()
 
   ],
   providers: [],

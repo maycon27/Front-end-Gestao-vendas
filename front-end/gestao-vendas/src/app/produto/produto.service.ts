@@ -10,27 +10,27 @@ import { Injectable } from '@angular/core';
 
 export class ProdutoService {
 
-  private readonly API = `${environment.API}`;
+  private readonly API = `${environment.API}/produtos`;
 
   constructor(private httpCliente: HttpClient) { }
 
-  getTodosProdutos(produto: IProduto){
-    return this.httpCliente.get<IProduto[]>(`${this.API}/categoria/${produto.categoria.codigo}/produto`);
+  getTodosProdutos(){
+    return this.httpCliente.get<IProduto[]>(this.API);
   }
 
-  getProdutoId(codigo: number){
-    return this.httpCliente.get<IProduto>(`${this.API}/${codigo}`);
+  getProdutoId(codigoProduto: number){
+    return this.httpCliente.get<IProduto>(`${this.API}/${codigoProduto}`);
   }
 
-  adicionarProduto(produto: IProduto){
+  adicionarProduto( produto: IProduto){
     return this.httpCliente.post<IProduto>(this.API,produto).pipe(take(1));
   }
 
-  atualizarProduto(produto: IProduto){
+  atualizarProduto( produto: IProduto){
     return this.httpCliente.put<IProduto>(`${this.API}/${produto.codigo}`,produto);
   }
 
-  deletarProduto(codigo: number){
-    return this.httpCliente.delete(`${this.API}/${codigo}`);
+  deletarProduto(codigoProduto: number){
+    return this.httpCliente.delete(`${this.API}/${codigoProduto}`);
   }
 }
