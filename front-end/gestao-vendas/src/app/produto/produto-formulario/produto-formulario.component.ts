@@ -62,7 +62,7 @@ export class ProdutoFormularioComponent implements OnInit {
     if (produto.codigo) {
       this.produtoService.atualizarProduto(produto).subscribe(
         secesso => {
-          this.location.back();
+          this.router.navigate(['produto'])
         },
         error => console.error(error)
       );
@@ -70,7 +70,7 @@ export class ProdutoFormularioComponent implements OnInit {
     else{
     this.produtoService.adicionarProduto(produto).subscribe(
       secesso => {
-        this.location.back();
+        this.router.navigate(['produto'])
       },
       error => console.error(error)
     );
@@ -82,6 +82,6 @@ export class ProdutoFormularioComponent implements OnInit {
 
   voltar()
   {
-    this.location.back();
+    this.router.navigate(['produto'])
   }
 }

@@ -87,6 +87,6 @@ export class ClienteFormularioComponent implements OnInit {
 
   voltar()
   {
-    this.location.back();
+    this.router.navigate(['cliente'])
   }
 }

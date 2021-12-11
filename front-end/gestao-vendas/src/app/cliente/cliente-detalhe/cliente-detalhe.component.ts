@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ClienteService } from '../cliente.service';
 import { ICliente } from '../ICliente';
 import { Location } from '@angular/common';
@@ -15,7 +15,7 @@ export class ClienteDetalheComponent implements OnInit {
   constructor(
     private clienteService: ClienteService,
     private route: ActivatedRoute,
-    private location: Location
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +25,6 @@ export class ClienteDetalheComponent implements OnInit {
 
   voltar()
   {
-    this.location.back();
+    this.router.navigate(['cliente'])
   }
 }
