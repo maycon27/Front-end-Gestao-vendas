@@ -1,3 +1,4 @@
+import { VendedorModule } from './vendedor/vendedor.module';
 import { ProdutoModule } from './produto/produto.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,7 +22,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     CategoriaModule,
     ClienteModule,
     ProdutoModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    VendedorModule
 
   ],
   providers: [],

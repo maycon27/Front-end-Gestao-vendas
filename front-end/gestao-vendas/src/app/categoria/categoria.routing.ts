@@ -2,7 +2,7 @@
 import { CategoriaFormularioComponent } from './categoria-formulario/categoria-formulario.component';
 import { CategoriaListaComponent } from './categoria-lista/categoria-lista.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, Resolve } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: 'categoria', component: CategoriaListaComponent},

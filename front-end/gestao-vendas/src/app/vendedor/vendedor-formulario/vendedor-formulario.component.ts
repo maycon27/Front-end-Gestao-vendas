@@ -1,28 +1,25 @@
-import { Location } from '@angular/common';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { VendedorService } from './../vendedor.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { CategoriaService } from '../categoria.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-categoria-formulario',
-  templateUrl: './categoria-formulario.component.html',
-  styleUrls: ['./categoria-formulario.component.css'],
-  preserveWhitespaces: true
+  selector: 'app-vendedor-formulario',
+  templateUrl: './vendedor-formulario.component.html',
+  styleUrls: ['./vendedor-formulario.component.css']
 })
-export class CategoriaFormularioComponent implements OnInit {
+export class VendedorFormularioComponent implements OnInit {
 
   form!: FormGroup;
 
   constructor(
-    private categoriaService: CategoriaService,
+    private vendedorService: VendedorService,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-
     this.buildForm();
 
     const codigo = this.route.snapshot.params['codigo'];
@@ -39,7 +36,7 @@ export class CategoriaFormularioComponent implements OnInit {
   }
 
   preencherFormulario(codigo: number) {
-    this.categoriaService.getCategoriaId(codigo)
+    this.vendedorService.getVendedorId(codigo)
       .subscribe(result => {
         this.form.patchValue(result);
 
@@ -48,21 +45,21 @@ export class CategoriaFormularioComponent implements OnInit {
       );
   }
 
-  adicionarCategoria() {
+  adicionarVendedor() {
 
-    const categoria = this.form.value;
+    const vendedor = this.form.value;
 
-    if (categoria.codigo) {
-      this.categoriaService.atualizarCategoria(categoria).subscribe(
+    if (vendedor.codigo) {
+      this.vendedorService.atualizarVendedor(vendedor).subscribe(
         secesso => {
-          this.router.navigate(['categoria'])
+          this.router.navigate(['vendedor'])
         },
         error => console.error(error)
       );
     } else {
-      this.categoriaService.adicionarCategoria(categoria).subscribe(
+      this.vendedorService.adicionarVendedor(vendedor).subscribe(
         secesso => {
-          this.router.navigate(['categoria'])
+          this.router.navigate(['vendedor'])
         },
         error => console.error(error)
       );
@@ -73,9 +70,7 @@ export class CategoriaFormularioComponent implements OnInit {
   }
   voltar()
   {
-    this.router.navigate(['categoria'])
+    this.router.navigate(['vendedor'])
   }
 
 }
-
-
