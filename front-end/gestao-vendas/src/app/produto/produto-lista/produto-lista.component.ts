@@ -18,7 +18,6 @@ export class ProdutoListaComponent implements OnInit {
 
   constructor(
     private produtoService: ProdutoService,
-    private route: ActivatedRoute,
     private router: Router,) { }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { ICliente } from './../ICliente';
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../cliente.service';
-import { Router} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-cliente-lista',
@@ -14,7 +14,8 @@ export class ClienteListaComponent implements OnInit {
   clienteSelecionado! : ICliente;
   constructor(
     private clienteService: ClienteService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -33,5 +34,9 @@ export class ClienteListaComponent implements OnInit {
     this.clienteService.deletarCliente(this.clienteSelecionado.codigo!).subscribe(
       sucesso =>  this.clienteService.getTodosClientes().subscribe(dados => this.cliente = dados)
     );
+  }
+
+  listarVendas(codigo: number){
+    this.router.navigate(['venda/cliente/',codigo])
   }
 }

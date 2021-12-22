@@ -9,10 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoriaModule} from './categoria/categoria.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { VendaModule } from './venda/venda.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     ClienteModule,
     ProdutoModule,
     TooltipModule.forRoot(),
-    VendedorModule
+    VendedorModule,
+    VendaModule,
 
   ],
   providers: [],

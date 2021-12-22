@@ -17,6 +17,11 @@
       <td>{{ cliente.nome}} </td>
       <td>
         <span class="float-right">
+
+          <button class="btn btn-dark mb-1 btn-sm" (click)="listarVendas(cliente.codigo!)">
+            Listar Vendas
+          </button>
+          {{''}}
         <button class="btn btn-outline-info mb-1 btn-sm" (click)="detalheCliente(cliente.codigo!)">
           Detalhe
         </button>
