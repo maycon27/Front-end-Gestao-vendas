@@ -1,0 +1,33 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Data Venda</th>
+        <th scope="col">Status</th>
+        <th scope="col">Vendedor</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Venda</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>{{venda.codigo}}</td>
+          <td>{{venda.data}}</td>
+          <td>{{venda.ativo}}</td>
+          <td>{{venda.nomeVendedor}}</td>
+          <td>{{venda.nomeCliente}}</td>
+          <td *ngFor="let item of venda.itemVendaResponseDTO">
+            <div class="container">
+              <p>Produto: {{item.produtoDescricao  }}</p>
+              <p>Quantidade: {{item.quantidade  }}</p>
+              <p>Preço Vendido: R${{item.precoVendido  }}</p>
+              <p>Pagamento à Vista: R${{item.pagamentoVista  }}</p>
+              <p>Pagamento à Prazo: R${{item.pagamentoPrazo  }}</p>
+            </div>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-danger" (click)="voltar()">Voltar</button>

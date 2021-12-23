@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { VendaService } from '../venda.service';
 
 @Component({
   selector: 'app-venda-formulario',
@@ -7,9 +10,62 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VendaFormularioComponent implements OnInit {
 
-  constructor() { }
+  form!: FormGroup;
+  skillsForm!: FormGroup;
+  constructor(
+    private vendaService: VendaService,
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    
+   }
 
   ngOnInit(): void {
+    this.buildForm();
   }
 
+  buildForm(){
+
+    this.form = this.fb.group({
+      codigo: [null],
+      data: [null,[Validators.required]],
+      codigoVendedor: [null,[Validators.required]],
+      codigoCliente: [null,[Validators.required]],
+      ativo:['true', [Validators.required]], 
+      itensVenda: this.fb.array([]), 
+    });
+  }
+
+  novoItensVenda(): FormGroup{
+    return this.fb.group({
+      codigoProduto: [null, [Validators.required]],
+      quantidade:[null,[Validators.required]],
+      precoVendido: [null, [Validators.required]],
+      pagamentoVista: [null,[Validators.required]],
+      pagamentoPrazo: [null,[Validators.required]]
+    });
+  }
+
+  get itensVenda(): FormArray{
+    return this.form.get("itensVenda") as FormArray;
+  }
+
+
+  inserirItens(){
+    this.itensVenda.push(this.novoItensVenda());
+  }
+
+  adicionarVenda(){
+
+    const venda = this.form.value;
+
+    this.vendaService.adicionarVenda(venda).subscribe(
+      secesso => {
+        this.router.navigate(['venda'])
+      },
+      error => console.error(error)
+    );
+  }
 }
+ 

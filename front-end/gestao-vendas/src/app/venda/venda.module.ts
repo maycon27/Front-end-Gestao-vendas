@@ -6,6 +6,7 @@ import { VendaRoutes } from "./venda.routing";
 import { VendaFormularioComponent } from './venda-formulario/venda-formulario.component';
 import { VendaListaComponent } from './venda-lista/venda-lista.component';
 import { VendaService } from "./venda.service";
+import { VendaDetalheComponent } from "./venda-detalhe/venda-detalhe.component";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { VendaService } from "./venda.service";
     VendaComponent,
     VendaFormularioComponent,
     VendaListaComponent,
+    VendaDetalheComponent
 
   ],
 

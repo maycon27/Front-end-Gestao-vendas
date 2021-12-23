@@ -1,37 +1,42 @@
 <div class="float-right">
+  <a routerLink="formulario"><button type="button" class="btn btn-secondary">Nova Venda</button></a>
+  <p></p>
   <p></p>
 </div>
-<table class="table table-hover">
-<th scope="col">Cliente: {{venda?.nome}}</th>
-</table>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Codigo Da Venda</th>
-      <th scope="col">Data da Compra</th>
+      <th scope="col">#</th>
       <th scope="col">Vendedor</th>
-      <th scope="col"><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Vendas</button></th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Data Da Venda</th>
+
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let v of venda?.vendaResponseDTO">
-      <td>{{v.codigo}}</td>
-      <td>{{v.data}} </td>
-      <td>{{v.nomeVendedor}}</td>
-      <td *ngFor="let item of v.itemVendaResponseDTO">
-        <div class="container">
-          <div id="demo" class="collapse">
-            <p>Produto: {{item.produtoDescricao}}</p>
-            <p>Quantidade: {{item.quantidade}}</p>
-            <p>Preço Vendido: R${{item.precoVendido}}</p>
-            <p>Pagamento à Vista: R${{item.pagamentoVista}}</p>
-            <p>Pagamento à Prazo: R${{item.pagamentoPrazo}}</p>
-          </div>
-        </div>
+    <tr *ngFor="let venda of venda">
+      <td>{{ venda.codigo}} </td>
+      <td>{{ venda.nomeVendedor}} </td>
+      <td>{{ venda.nomeCliente}} </td>
+      <td>{{ venda.data}}</td>
+
+      <td>
+        <span class="float-right">
+
+        <button class="btn btn-outline-info mb-1 btn-sm" (click)="detalheVenda(venda.codigo!)">
+          Detalhe
+        </button>
+          {{''}}
+        <button class="btn btn-outline-warning mb-1 btn-sm">
+          Atualizar
+        </button>
+          {{''}}
+        <button class="btn btn-outline-danger mb-1 btn-sm " (click)="deletarVenda(venda)">
+          Remover
+        </button>
+        </span>
       </td>
     </tr>
-
   </tbody>
 </table>
-

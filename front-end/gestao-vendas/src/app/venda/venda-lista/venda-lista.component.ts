@@ -1,9 +1,7 @@
-import { IClienteVendas } from './../IClienteVenda';
+import { IVendas } from './../IVendas';
 import { VendaService } from './../venda.service';
-import { IVendasItens } from './../IVendasItem';
 import { Component, OnInit } from '@angular/core';
-import { IVendas } from '../IVendas';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-venda-lista',
@@ -12,19 +10,28 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class VendaListaComponent implements OnInit {
 
-  venda!: IClienteVendas;
+  venda: IVendas[] = [];
+  vendaSelecionada!: IVendas;
   constructor(
     private vendasService: VendaService,
-    private route: ActivatedRoute
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    const codigo = this.route.snapshot.params['codigo'];
-
-    this.vendasService.getVendaCliente(codigo).subscribe((dados) => {
+    this.vendasService.getTodasVenda().subscribe(dados => {
       this.venda = dados;
       console.log(this.venda)
     });
+  }
+
+  detalheVenda(codigo: number){
+    this.router.navigate([`venda/detalhe`, codigo])
+  }
+
+  deletarVenda(venda: IVendas){
+    this.vendaSelecionada = venda;
+    this.vendasService.deletarVenda(this.vendaSelecionada.codigo!).subscribe(
+      sucesso =>  this.vendasService.getTodasVenda().subscribe(dados => this.venda = dados));
   }
 
 }

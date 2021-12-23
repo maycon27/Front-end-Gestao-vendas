@@ -13,7 +13,7 @@ import { VendaModule } from './venda/venda.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
