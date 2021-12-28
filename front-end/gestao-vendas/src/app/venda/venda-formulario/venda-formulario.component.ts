@@ -17,7 +17,7 @@ export class VendaFormularioComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router
   ) {
-    
+
    }
 
   ngOnInit(): void {
@@ -31,8 +31,8 @@ export class VendaFormularioComponent implements OnInit {
       data: [null,[Validators.required]],
       codigoVendedor: [null,[Validators.required]],
       codigoCliente: [null,[Validators.required]],
-      ativo:['true', [Validators.required]], 
-      itensVenda: this.fb.array([]), 
+      ativo:['true', [Validators.required]],
+      itensVendaDto: this.fb.array([]),
     });
   }
 
@@ -46,13 +46,13 @@ export class VendaFormularioComponent implements OnInit {
     });
   }
 
-  get itensVenda(): FormArray{
-    return this.form.get('itensVenda') as FormArray;
+  get itensVendaDto(): FormArray{
+    return this.form.get('itensVendaDto') as FormArray;
   }
 
 
   inserirItens(){
-    this.itensVenda.push(this.novoItensVenda());
+    this.itensVendaDto.push(this.novoItensVenda());
   }
 
   adicionarVenda(){
@@ -68,4 +68,3 @@ export class VendaFormularioComponent implements OnInit {
     );
   }
 }
- 

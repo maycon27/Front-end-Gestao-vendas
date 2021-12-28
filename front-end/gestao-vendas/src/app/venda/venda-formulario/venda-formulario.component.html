@@ -1,63 +1,112 @@
 <form>
-    <div class="form-group" [formGroup]="form">
-        <div class="form-row">
-            <div  class="col-sm-4">
-                <label for="Data">Data da Venda</label>
-                <input type="text" class="form-control" id="data" placeholder="Data da Venda" formControlName="data">
+  <div class="form-group" [formGroup]="form">
+      <div class="form-row">
+          <div  class="col-sm-3">
+              <label for="Data">Data da Venda</label>
+              <input type="text" class="form-control" id="data" placeholder="Data da Venda" formControlName="data">
 
-            </div>
-            <div  class="col-sm-4">
-                <label for="codigoCliente">Codigo do Cliente</label>
-                <input type="number" class="form-control" id="codigoCliente" placeholder="Codigo do Cliente"
-                    formControlName="codigoCliente">
-            </div>
-                <div  class="col-sm-4">
-                    <label for="codigoVendedor">Codigo do Vendedor</label>
-                    <input type="number" class="form-control" id="codigoVendedor" placeholder="Codigo do Vendedor"
-                        formControlName="codigoVendedor">
-                </div>
-                <div class="col-sm-4">
-                    <label for="ativo">Status da Venda</label>
-                    <input type="text" class="form-control" id="ativo" placeholder="Status da Venda"
-                        formControlName="ativo">
-                </div>
+          </div>
+          <div  class="col-sm-3">
+              <label for="codigoCliente">Codigo do Cliente</label>
+              <input type="number" class="form-control" id="codigoCliente" placeholder="Codigo do Cliente"
+                  formControlName="codigoCliente">
+          </div>
+              <div  class="col-sm-3">
+                  <label for="codigoVendedor">Codigo do Vendedor</label>
+                  <input type="number" class="form-control" id="codigoVendedor" placeholder="Codigo do Vendedor"
+                      formControlName="codigoVendedor">
+              </div>
+              <div class="col-sm-3">
+                  <label for="ativo">Status da Venda</label>
+                  <input type="text" class="form-control" id="ativo" placeholder="Status da Venda"
+                      formControlName="ativo">
+              </div>
 
-                <div formArrayName="itensVenda">
-                    <div *ngFor="let itens of itensVenda.controls; let i=index">
-                        <div [formGroupName]="i"  class="form-row">
-                            <div class="col-sm-2">
-                                <label for="codigoProduto">Codigo do Produto</label>
-                                <input type="number" class="form-control" id="codigoProduto"
-                                    placeholder="Codigo do Produto" formControlName="codigoProduto">
-                            </div>
-                            <div  class="col-sm-2">
-                                <label for="quantidade">Quantidade</label>
-                                <input type="number" class="form-control" id="quantidade"
-                                    placeholder="Quantidade do Produto" formControlName="quantidade">
-                            </div>
-                            <div  class="col-sm-2">
-                                <label for="precoVendido">Preço Vendido</label>
-                                <input type="number" class="form-control" id="precoVendido" placeholder="Preço Vendido"
-                                    formControlName="precoVendido">
-                            </div>
-                            <div  class="col-sm-2">
-                                <label for="pagamentoVista">Pagamento à Vista</label>
-                                <input type="number" class="form-control" id="pagamentoVista"
-                                    placeholder="Pagamento à Vista" formControlName="pagamentoVista">
-                            </div>
-                            <div  class="col-sm-2">
-                                <label for="pagamentoPrazo">Pagamento à Prazo</label>
-                                <input type="number" class="form-control" id="pagamentoPrazo"
-                                    placeholder="Pagamento à Prazo" formControlName="pagamentoPrazo">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-    </div>
+              <div formArrayName="itensVendaDto">
+                  <div *ngFor="let itens of itensVendaDto.controls; let i=index">
+                      <div [formGroupName]="i"  class="form-row">
+                          <div class="col-sm-3">
+                              <label for="codigoProduto">Codigo do Produto</label>
+                              <input type="number" class="form-control" id="codigoProduto"
+                                  placeholder="Codigo do Produto" formControlName="codigoProduto">
+                          </div>
+                          <div  class="col-sm-3">
+                              <label for="quantidade">Quantidade</label>
+                              <input type="number" class="form-control" id="quantidade"
+                                  placeholder="Quantidade do Produto" formControlName="quantidade">
+                          </div>
+                          <div  class="col-sm-2">
+                              <label for="precoVendido">Preço Vendido</label>
+                              <input type="number" class="form-control" id="precoVendido" placeholder="Preço Vendido"
+                                  formControlName="precoVendido">
+                          </div>
+                          <div  class="col-sm-2">
+                              <label for="pagamentoVista">Pagamento à Vista</label>
+                              <input type="number" class="form-control" id="pagamentoVista"
+                                  placeholder="Pagamento à Vista" formControlName="pagamentoVista">
+                          </div>
+                          <div  class="col-sm-2">
+                              <label for="pagamentoPrazo">Pagamento à Prazo</label>
+                              <input type="number" class="form-control" id="pagamentoPrazo"
+                                  placeholder="Pagamento à Prazo" formControlName="pagamentoPrazo">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+  </div>
 </form>
 <button type="button" class="btn btn-dark" (click)="inserirItens()"> Adicionar Itens</button>
 {{''}}
 <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid"
-    (click)="adicionarVenda()">Salvar</button>
+  (click)="adicionarVenda()">Salvar</button>
+
+<!--
+<div class="p-3">
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Modal title</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+        <div class="col-md-9">
+
+          <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+</div>
+-->

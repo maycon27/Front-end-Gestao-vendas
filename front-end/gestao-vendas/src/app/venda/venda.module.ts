@@ -7,6 +7,8 @@ import { VendaFormularioComponent } from './venda-formulario/venda-formulario.co
 import { VendaListaComponent } from './venda-lista/venda-lista.component';
 import { VendaService } from "./venda.service";
 import { VendaDetalheComponent } from "./venda-detalhe/venda-detalhe.component";
+import { VendaProdutoItemComponent } from './venda-produto-item/venda-produto-item.component';
+import { VendaProdutoListaComponent } from './venda-produto-lista/venda-produto-lista.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { VendaDetalheComponent } from "./venda-detalhe/venda-detalhe.component";
     VendaComponent,
     VendaFormularioComponent,
     VendaListaComponent,
-    VendaDetalheComponent
+    VendaDetalheComponent,
+    VendaProdutoItemComponent,
+    VendaProdutoListaComponent
 
   ],
 
