@@ -11,12 +11,11 @@ import { VendaService } from '../venda.service';
 export class VendaFormularioComponent implements OnInit {
 
   form!: FormGroup;
-  skillsForm!: FormGroup;
+
   constructor(
     private vendaService: VendaService,
     private fb: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {
     
    }
@@ -48,7 +47,7 @@ export class VendaFormularioComponent implements OnInit {
   }
 
   get itensVenda(): FormArray{
-    return this.form.get("itensVenda") as FormArray;
+    return this.form.get('itensVenda') as FormArray;
   }
 
 
@@ -59,6 +58,7 @@ export class VendaFormularioComponent implements OnInit {
   adicionarVenda(){
 
     const venda = this.form.value;
+    console.log(venda)
 
     this.vendaService.adicionarVenda(venda).subscribe(
       secesso => {

@@ -1,73 +1,63 @@
 <form>
     <div class="form-group" [formGroup]="form">
         <div class="form-row">
-            <div class="form-group col-md-3">
+            <div  class="col-sm-4">
                 <label for="Data">Data da Venda</label>
                 <input type="text" class="form-control" id="data" placeholder="Data da Venda" formControlName="data">
-                <small class="text-danger" *ngIf="form.invalid">Data é obrigatorio</small>
+
             </div>
-            <div class="form-group col-md-3">
+            <div  class="col-sm-4">
                 <label for="codigoCliente">Codigo do Cliente</label>
                 <input type="number" class="form-control" id="codigoCliente" placeholder="Codigo do Cliente"
                     formControlName="codigoCliente">
-                <small class="text-danger" *ngIf="form.invalid">Codigo do cliente é obrigatorio</small>
             </div>
-            <div class="form-group col-md-3">
-                <label for="codigoVendedor">Codigo do Vendedor</label>
-                <input type="number" class="form-control" id="codigoVendedor" placeholder="Codigo do Vendedor"
-                    formControlName="codigoVendedor">
-                <small class="text-danger" *ngIf="form.invalid">Codigo do vendedor é obrigatorio</small>
-            </div>
-            <div class="form-group col-md-3">
-                <label for="ativo">Status da Venda</label>
-                <input type="text" class="form-control" id="ativo" placeholder="Status da Venda"
-                    formControlName="ativo">
-                <small class="text-danger" *ngIf="form.invalid">Status da é obrigatorio</small>
-            </div>
+                <div  class="col-sm-4">
+                    <label for="codigoVendedor">Codigo do Vendedor</label>
+                    <input type="number" class="form-control" id="codigoVendedor" placeholder="Codigo do Vendedor"
+                        formControlName="codigoVendedor">
+                </div>
+                <div class="col-sm-4">
+                    <label for="ativo">Status da Venda</label>
+                    <input type="text" class="form-control" id="ativo" placeholder="Status da Venda"
+                        formControlName="ativo">
+                </div>
 
-            <div formArrayName="itensVenda">
-                <div *ngFor="let itens of itensVenda.controls; let i=index">
-                    <div [formGroupName]="i">
-                        <div>
-                            <label for="codigoProduto">Codigo do Produto</label>
-                            <input type="number" class="form-control" id="codigoProduto" placeholder="Codigo do Produto"
-                                formControlName="codigoProduto">
-                            <small class="text-danger" *ngIf="form.invalid">Codigo do Produto é obrigatorio</small>
+                <div formArrayName="itensVenda">
+                    <div *ngFor="let itens of itensVenda.controls; let i=index">
+                        <div [formGroupName]="i"  class="form-row">
+                            <div class="col-sm-2">
+                                <label for="codigoProduto">Codigo do Produto</label>
+                                <input type="number" class="form-control" id="codigoProduto"
+                                    placeholder="Codigo do Produto" formControlName="codigoProduto">
+                            </div>
+                            <div  class="col-sm-2">
+                                <label for="quantidade">Quantidade</label>
+                                <input type="number" class="form-control" id="quantidade"
+                                    placeholder="Quantidade do Produto" formControlName="quantidade">
+                            </div>
+                            <div  class="col-sm-2">
+                                <label for="precoVendido">Preço Vendido</label>
+                                <input type="number" class="form-control" id="precoVendido" placeholder="Preço Vendido"
+                                    formControlName="precoVendido">
+                            </div>
+                            <div  class="col-sm-2">
+                                <label for="pagamentoVista">Pagamento à Vista</label>
+                                <input type="number" class="form-control" id="pagamentoVista"
+                                    placeholder="Pagamento à Vista" formControlName="pagamentoVista">
+                            </div>
+                            <div  class="col-sm-2">
+                                <label for="pagamentoPrazo">Pagamento à Prazo</label>
+                                <input type="number" class="form-control" id="pagamentoPrazo"
+                                    placeholder="Pagamento à Prazo" formControlName="pagamentoPrazo">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <p></p>
-                <p></p>
             </div>
-        </div>
+        
     </div>
 </form>
-<button type="button" (click)="inserirItens()"> Adicionar Itens</button>
-    {{''}}
+<button type="button" class="btn btn-dark" (click)="inserirItens()"> Adicionar Itens</button>
+{{''}}
 <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid"
     (click)="adicionarVenda()">Salvar</button>
-
-<!-- <div>
-                            <label for="quantidade">Quantidade</label>
-                            <input type="number" class="form-control" id="quantidade"
-                                placeholder="Quantidade de Produto" formControlName="quantidade">
-                            <small class="text-danger" *ngIf="form.invalid">Quantidade do Produto é obrigatorio</small>
-                        </div>
-                        <div>
-                            <label for="PrecoVenda">Preco Vendido</label>
-                            <input type="number" class="form-control" id="precoVenda" placeholder="Preco Vendido"
-                                formControlName="precoVenda">
-                            <small class="text-danger" *ngIf="form.invalid">Preço Vendido é obrigatorio</small>
-                        </div>
-                        <div>
-                            <label for="PagamentoVista">Pagamento à Vista</label>
-                            <input type="number" class="form-control" id="pagamentoVista"
-                                placeholder="Pagamento à Vista" formControlName="pagamentoVista">
-                            <small class="text-danger" *ngIf="form.invalid">Preço Vendido é obrigatorio</small>
-                        </div>
-                        <div>
-                            <label for="PagamentoPrazo">Pagamento à Prazo</label>
-                            <input type="number" class="form-control" id="pagamentoPrazo"
-                                placeholder="Pagamento à Prazo" formControlName="pagamentoPrazo">
-                            <small class="text-danger" *ngIf="form.invalid">Preço Vendido é obrigatorio</small>
-                        </div>-->
