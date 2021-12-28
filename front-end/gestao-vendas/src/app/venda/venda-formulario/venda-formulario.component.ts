@@ -11,14 +11,13 @@ import { VendaService } from '../venda.service';
 export class VendaFormularioComponent implements OnInit {
 
   form!: FormGroup;
-  skillsForm!: FormGroup;
+
   constructor(
     private vendaService: VendaService,
     private fb: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {
-    
+
    }
 
   ngOnInit(): void {
@@ -32,8 +31,8 @@ export class VendaFormularioComponent implements OnInit {
       data: [null,[Validators.required]],
       codigoVendedor: [null,[Validators.required]],
       codigoCliente: [null,[Validators.required]],
-      ativo:['true', [Validators.required]], 
-      itensVenda: this.fb.array([]), 
+      ativo:['true', [Validators.required]],
+      itensVendaDto: this.fb.array([]),
     });
   }
 
@@ -47,18 +46,19 @@ export class VendaFormularioComponent implements OnInit {
     });
   }
 
-  get itensVenda(): FormArray{
-    return this.form.get("itensVenda") as FormArray;
+  get itensVendaDto(): FormArray{
+    return this.form.get('itensVendaDto') as FormArray;
   }
 
 
   inserirItens(){
-    this.itensVenda.push(this.novoItensVenda());
+    this.itensVendaDto.push(this.novoItensVenda());
   }
 
   adicionarVenda(){
 
     const venda = this.form.value;
+    console.log(venda)
 
     this.vendaService.adicionarVenda(venda).subscribe(
       secesso => {
@@ -68,4 +68,3 @@ export class VendaFormularioComponent implements OnInit {
     );
   }
 }
- 

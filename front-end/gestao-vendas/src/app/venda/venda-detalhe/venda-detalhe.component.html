@@ -12,18 +12,18 @@
     </thead>
     <tbody>
       <tr>
-          <td>{{venda.codigo}}</td>
-          <td>{{venda.data}}</td>
-          <td>{{venda.ativo}}</td>
-          <td>{{venda.nomeVendedor}}</td>
-          <td>{{venda.nomeCliente}}</td>
-          <td *ngFor="let item of venda.itemVendaResponseDTO">
+          <td>{{venda?.codigo}}</td>
+          <td>{{venda?.data}}</td>
+          <td>{{venda?.ativo}}</td>
+          <td>{{venda?.nomeVendedor}}</td>
+          <td>{{venda?.nomeCliente}}</td>
+          <td *ngFor="let item of venda?.itemVendaResponseDTO">
             <div class="container">
-              <p>Produto: {{item.produtoDescricao  }}</p>
-              <p>Quantidade: {{item.quantidade  }}</p>
-              <p>Preço Vendido: R${{item.precoVendido  }}</p>
-              <p>Pagamento à Vista: R${{item.pagamentoVista  }}</p>
-              <p>Pagamento à Prazo: R${{item.pagamentoPrazo  }}</p>
+              <p>Produto: {{item?.produtoDescricao  }}</p>
+              <p>Quantidade: {{item?.quantidade  }}</p>
+              <p>Preço Vendido: R${{item?.precoVendido  }}</p>
+              <p>Pagamento à Vista: R${{item?.pagamentoVista  }}</p>
+              <p>Pagamento à Prazo: R${{item?.pagamentoPrazo  }}</p>
             </div>
         </td>
         <td></td>
