@@ -1,3 +1,4 @@
+import { loginModule } from './login/login.module';
 import { VendedorModule } from './vendedor/vendedor.module';
 import { ProdutoModule } from './produto/produto.module';
 import { ClienteModule } from './cliente/cliente.module';
@@ -10,6 +11,7 @@ import { AppComponent } from './app.component';
 import { CategoriaModule} from './categoria/categoria.module';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { VendaModule } from './venda/venda.module';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { VendaModule } from './venda/venda.module';
     TooltipModule.forRoot(),
     VendedorModule,
     VendaModule,
+    loginModule
 
   ],
   providers: [],
