@@ -1,8 +1,9 @@
+import { JwtInterceptor } from './login/JwtInterceptor';
 import { loginModule } from './login/login.module';
 import { VendedorModule } from './vendedor/vendedor.module';
 import { ProdutoModule } from './produto/produto.module';
 import { ClienteModule } from './cliente/cliente.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routing } from './app.routing';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -31,7 +32,9 @@ import { VendaModule } from './venda/venda.module';
     loginModule
 
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

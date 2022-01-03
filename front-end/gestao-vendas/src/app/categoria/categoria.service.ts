@@ -1,6 +1,6 @@
 import { ICategoria } from './ICategoria';
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http'
+import { HttpClient, HttpHeaders} from '@angular/common/http'
 import { environment} from 'src/environments/environment'
 import { tap, delay, take } from 'rxjs/operators';
 
@@ -17,6 +17,9 @@ export class CategoriaService {
   constructor(private httpCliente: HttpClient) { }
 
   getTodasCategorias(){
+
+    //const header = new HttpHeaders().set('Authorization',`Bearer ${(localStorage.getItem('token') || '')}`);
+
     return this.httpCliente.get<ICategoria[]>(this.API);
   }
 
