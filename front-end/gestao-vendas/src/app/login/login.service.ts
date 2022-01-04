@@ -11,18 +11,18 @@ import { map } from 'rxjs/operators';
 export class LoginService {
 
 
-  private currentUserSubject!: BehaviorSubject<IUsuario>;
-  public currentUser!: Observable<IUsuario>;
+  private currentUserSubject?: BehaviorSubject<IUsuario>;
+  public currentUser?: Observable<IUsuario>;
 
   private readonly API = `${environment.API}/login`;
 
   constructor(private httpCliente: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<IUsuario>(JSON.parse(localStorage.getItem('currentUser')|| ''));
-    this.currentUser = this.currentUserSubject.asObservable();
+
+    this.initUser();
    }
 
-   public get currentUserValue(): IUsuario {
-    return this.currentUserSubject.value;
+   public get currentUserValue(): IUsuario | undefined {
+    return this.currentUserSubject?.value;
   }
 
   login(username: string, password: string) {
@@ -32,10 +32,21 @@ export class LoginService {
       if(usuario && usuario.token){
 
         localStorage.setItem('currentUser', JSON.stringify(usuario));
-        this.currentUserSubject.next(usuario)
+        this.currentUserSubject?.next(usuario)
       }
 
       return usuario;
     }));
   }
+
+  private initUser(){
+
+    const userLocal = localStorage.getItem('currentUser');
+
+      if(userLocal){
+        this.currentUserSubject = new BehaviorSubject<IUsuario>(JSON.parse(userLocal));
+        this.currentUser = this.currentUserSubject.asObservable();
+      }
+  }
+
 }
