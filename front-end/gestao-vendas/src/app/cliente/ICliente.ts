@@ -3,7 +3,7 @@ export interface ICliente{
   nome: string;
   telefone: string;
   ativo: boolean;
-  enderecoDto: enderecoDto;
+  endereco: enderecoDto;
 }
 
 export interface enderecoDto{

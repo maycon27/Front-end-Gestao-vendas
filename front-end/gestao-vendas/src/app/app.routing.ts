@@ -1,3 +1,4 @@
+import { AuthGuard } from './login/AuthGuard.guard';
 
 import { VendedorComponent } from './vendedor/vendedor.component';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,11 +10,11 @@ import { LoginComponent } from './login/login.component';
 
 
 const APP_ROUTES: Routes = [
-  {path: 'categoria', component: CategoriaComponent},
-  {path: 'cliente', component: ClienteComponent},
-  {path: 'produto', component: ProdutoComponent},
-  {path: 'vendedor', component: VendedorComponent},
-  {path: 'venda', component: VendaComponent},
+  {path: 'categoria', component: CategoriaComponent, canActivate: [AuthGuard]},
+  {path: 'cliente', component: ClienteComponent, canActivate: [AuthGuard]},
+  {path: 'produto', component: ProdutoComponent , canActivate: [AuthGuard]},
+  {path: 'vendedor', component: VendedorComponent , canActivate: [AuthGuard]},
+  {path: 'venda', component: VendaComponent , canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
 ];
 

@@ -1,3 +1,4 @@
+import { AuthGuard } from './login/AuthGuard.guard';
 import { JwtInterceptor } from './login/JwtInterceptor';
 import { loginModule } from './login/login.module';
 import { VendedorModule } from './vendedor/vendedor.module';
@@ -34,6 +35,7 @@ import { VendaModule } from './venda/venda.module';
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
