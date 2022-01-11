@@ -1,3 +1,4 @@
+import { LoginService } from './../../login/login.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ICategoria } from 'src/app/categoria/ICategoria';
@@ -34,4 +35,5 @@ export class CategoriaListaComponent implements OnInit {
       sucesso =>  this.categoriaService.getTodasCategorias().subscribe(dados => this.categoria = dados)
     );
   }
+
 }
