@@ -16,11 +16,11 @@ export class CategoriaService {
 
   constructor(private httpCliente: HttpClient) { }
 
-  getTodasCategorias(){
+  getTodasCategorias() : Promise<ICategoria[]>{
 
     //const header = new HttpHeaders().set('Authorization',`Bearer ${(localStorage.getItem('token') || '')}`);
 
-    return this.httpCliente.get<ICategoria[]>(this.API);
+    return this.httpCliente.get<ICategoria[]>(this.API).toPromise();
   }
 
   getCategoriaId(codigo: number){

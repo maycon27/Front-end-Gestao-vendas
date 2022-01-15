@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     .pipe(first())
     .subscribe(
       data => {
-        this.router.navigate(['categoria'])
+        this.router.navigateByUrl('/categoria')
       },
       error => console.error(error)
 
